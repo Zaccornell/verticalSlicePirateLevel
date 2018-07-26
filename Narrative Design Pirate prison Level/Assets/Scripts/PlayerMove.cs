@@ -14,12 +14,8 @@ public class PlayerMove : MonoBehaviour {
 
      void Update()
     {
+        
         MovePlayer();
-
-        //if (Input.GetKey(KeyCode.Space))
-        //{
-        //    transform.position = transform.position + new Vector3(0, 0.3f, 0);
-        //}
     }
 
     void MovePlayer()

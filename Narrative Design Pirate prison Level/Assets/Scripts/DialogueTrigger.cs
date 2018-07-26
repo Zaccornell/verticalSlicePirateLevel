@@ -18,6 +18,11 @@ public class DialogueTrigger : MonoBehaviour {
         triggerForBrokenWallTrigger.SetActive(false);
     }
 
+
+     void Update()
+    {
+        
+    }
     public void TriggerDialogue()
     {
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
@@ -33,11 +38,14 @@ public class DialogueTrigger : MonoBehaviour {
             button.SetActive(true);
             nameText.SetActive(true);
             dialogueText.SetActive(true);
+            
+           
 
-           
-          //FindObjectOfType<DialogueManager>().DisplayNextSentance();
-           
+            //FindObjectOfType<DialogueManager>().DisplayNextSentance();
+
         }
+      
+
     }
 
     public void OnTriggerExit(Collider other)
@@ -48,6 +56,12 @@ public class DialogueTrigger : MonoBehaviour {
         dialogueText.SetActive(false);
         Destroy(this.gameObject);
         triggerForBrokenWallTrigger.SetActive(true);
+       
+    }
 
+    void HidingCursor()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
