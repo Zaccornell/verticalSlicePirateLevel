@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueTrigger : MonoBehaviour {
 
@@ -11,11 +12,16 @@ public class DialogueTrigger : MonoBehaviour {
     public GameObject dialogueText;
     public GameObject triggerForBrokenWallTrigger;
 
+    public Cursor cursorUI;
+
     private void Start()
     {
         textBox.SetActive(false);
         button.SetActive(false);
         triggerForBrokenWallTrigger.SetActive(false);
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
 
@@ -38,13 +44,26 @@ public class DialogueTrigger : MonoBehaviour {
             button.SetActive(true);
             nameText.SetActive(true);
             dialogueText.SetActive(true);
-            
-           
+
+            if (other.tag == "player")
+            {
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+
 
             //FindObjectOfType<DialogueManager>().DisplayNextSentance();
 
         }
-      
+            GameObject camera = GameObject.Find("Camera");
+
+            camera.GetComponent<playerLook>().Talking();
+        Debug.Log("This worked");
 
     }
 
@@ -56,7 +75,12 @@ public class DialogueTrigger : MonoBehaviour {
         dialogueText.SetActive(false);
         Destroy(this.gameObject);
         triggerForBrokenWallTrigger.SetActive(true);
-       
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        GameObject camera = GameObject.Find("Camera");
+        camera.GetComponent<playerLook>().EndTalking();
     }
 
     void HidingCursor()

@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class PlayerRaycast : MonoBehaviour {
 
-	//int layer_mask = LayerMask.GetMask("Interactable");
-	//public LayerMask interactableObjects;
+    //int layer_mask = LayerMask.GetMask("Interactable");
+    //public LayerMask interactableObjects;
+
+    public GameObject knifeOutline;
+    public GameObject pieceOfMetalOutline;
 
 	// Use this for initialization
 	void Start () {
-		
+        knifeOutline.SetActive(false);
+        pieceOfMetalOutline.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -30,8 +34,15 @@ public class PlayerRaycast : MonoBehaviour {
 			distanceOfRay = hit.distance;
 			//print (distanceOfRay + "" + hit.collider.gameObject.name);
 			if (hit.collider.tag == "Metal") {
-				Debug.Log (distanceOfRay + "" + hit.collider.gameObject.name);
+               // Debug.Log (distanceOfRay + "" + hit.collider.gameObject.name);
+                knifeOutline.SetActive(true);
+                pieceOfMetalOutline.SetActive(true);
 			}
+            else
+            {
+                knifeOutline.SetActive(false);
+                pieceOfMetalOutline.SetActive(false);
+            }
 
 		}
 			
