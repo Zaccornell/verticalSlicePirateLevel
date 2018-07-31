@@ -27,7 +27,7 @@ public class DialogueTrigger : MonoBehaviour {
 
      void Update()
     {
-        
+     
     }
     public void TriggerDialogue()
     {
@@ -63,7 +63,6 @@ public class DialogueTrigger : MonoBehaviour {
             GameObject camera = GameObject.Find("Camera");
 
             camera.GetComponent<playerLook>().Talking();
-        Debug.Log("This worked");
 
     }
 
