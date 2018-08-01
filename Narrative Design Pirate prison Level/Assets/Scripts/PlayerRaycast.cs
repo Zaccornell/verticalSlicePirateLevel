@@ -9,6 +9,7 @@ public class PlayerRaycast : MonoBehaviour {
 
     public GameObject knifeOutline;
     public GameObject pieceOfMetalOutline;
+    public LayerMask interactableLayer;
 
 	// Use this for initialization
 	void Start () {
@@ -29,7 +30,7 @@ public class PlayerRaycast : MonoBehaviour {
 
 
 
-		if (Physics.Raycast(transform.position,(forward), out hit, LayerMask.NameToLayer("Intractable")))
+		if (Physics.Raycast(transform.position,(forward), out hit, interactableLayer))
 		{
 			distanceOfRay = hit.distance;
 			//print (distanceOfRay + "" + hit.collider.gameObject.name);
