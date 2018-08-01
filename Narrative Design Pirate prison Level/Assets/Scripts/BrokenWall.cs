@@ -10,7 +10,8 @@ public class BrokenWall : MonoBehaviour {
     public GameObject brokenWallGuard;
     public GameObject currentWindowWall;
     public GameObject currentGuardWall;
-    public GameObject currentGate;
+    public GameObject currentGate1;
+    public GameObject currentGate2;
 
     public CameraShake cameraShake;
    
@@ -35,11 +36,12 @@ public class BrokenWall : MonoBehaviour {
         if (GameObject.FindGameObjectWithTag("Metal") == null)
         {
             brokenWindowWall.SetActive(true);
-        brokenWallGuard.SetActive(true);
-        currentWindowWall.SetActive(false);
-        currentGuardWall.SetActive(false);
-        currentGate.SetActive(false);
-        dialogueTriggerSecond.SetActive(true);
+            brokenWallGuard.SetActive(true);
+            currentWindowWall.SetActive(false);
+            currentGuardWall.SetActive(false);
+            currentGate1.SetActive(false);
+            currentGate2.SetActive(false);
+            dialogueTriggerSecond.SetActive(true);
 
             brokenWallTrigger.SetActive(true);
         }
