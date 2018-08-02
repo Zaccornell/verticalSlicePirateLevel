@@ -8,6 +8,11 @@ public class DialogueManager : MonoBehaviour {
 
     public Text nameText;
     public Text dialogueText;
+    public GameObject textBoxOutside;
+    public GameObject textBoxInside;
+    public GameObject button;
+    new bool name = false;
+   
 
     public Queue<string> sentances;
 
@@ -47,6 +52,11 @@ public class DialogueManager : MonoBehaviour {
 
     public void EndDialogue()
     {
-        Debug.Log("End of conversation");
+        textBoxInside.SetActive(false);
+        textBoxOutside.SetActive(false);
+        button.SetActive(false);
+        dialogueText.text = "";
+        nameText.text = "";
+        
     }
 }

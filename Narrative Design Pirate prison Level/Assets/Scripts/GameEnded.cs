@@ -21,6 +21,10 @@ public class GameEnded : MonoBehaviour {
         Time.timeScale = 0f;
         youWin.SetActive(true);
 
+        if (other.tag == "Player")
+        {
+            Application.Quit();
+        }
 
     }
 }

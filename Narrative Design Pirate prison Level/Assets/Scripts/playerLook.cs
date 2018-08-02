@@ -25,8 +25,6 @@ public class playerLook : MonoBehaviour {
 
     void RotateCamera()
     {
-        if (enterTrigger == false)
-        {
             float mouseX = Input.GetAxis("Mouse X");
             float mouseY = Input.GetAxis("Mouse Y");
 
@@ -42,6 +40,8 @@ public class playerLook : MonoBehaviour {
             targetRotCam.z = 0;
             targetRotBody.y += rotateAmountX;
 
+        if (enterTrigger == false)
+        {
             if (xAxisClamp > 90)
             {
                 xAxisClamp = 90;
@@ -57,8 +57,8 @@ public class playerLook : MonoBehaviour {
 
 
             transform.rotation = Quaternion.Euler(targetRotCam);
-            playerBody.rotation = Quaternion.Euler(targetRotBody);
         }
+            playerBody.rotation = Quaternion.Euler(targetRotBody);
     }
     public void Talking()
     {

@@ -6,17 +6,20 @@ using UnityEngine.UI;
 public class DialogueTrigger : MonoBehaviour {
 
     public Dialogue dialogue;
-    public GameObject textBox;
+    public GameObject textBoxOutside;
+    public GameObject textBoxInside;
     public GameObject button;
     public GameObject nameText;
     public GameObject dialogueText;
     public GameObject triggerForBrokenWallTrigger;
+    public GameObject thisTrigger;
 
     public Cursor cursorUI;
 
     private void Start()
     {
-        textBox.SetActive(false);
+        textBoxOutside.SetActive(false);
+        textBoxInside.SetActive(false);
         button.SetActive(false);
         triggerForBrokenWallTrigger.SetActive(false);
 
@@ -27,7 +30,13 @@ public class DialogueTrigger : MonoBehaviour {
 
      void Update()
     {
-     
+        if (GameObject.FindGameObjectWithTag("Metal") == null)
+        {
+            Debug.Log("it worked");
+            triggerForBrokenWallTrigger.SetActive(true);
+            //Destroy(this.gameObject);
+            thisTrigger.SetActive(false);
+        }
     }
     public void TriggerDialogue()
     {
@@ -40,7 +49,8 @@ public class DialogueTrigger : MonoBehaviour {
         {
             
             TriggerDialogue();
-            textBox.SetActive(true);
+            textBoxOutside.SetActive(true);
+            textBoxInside.SetActive(true);
             button.SetActive(true);
             nameText.SetActive(true);
             dialogueText.SetActive(true);
@@ -68,12 +78,17 @@ public class DialogueTrigger : MonoBehaviour {
 
     public void OnTriggerExit(Collider other)
     {
-        textBox.SetActive(false);
+        textBoxOutside.SetActive(false);
+        textBoxInside.SetActive(false);
         button.SetActive(false);
         nameText.SetActive(false);
         dialogueText.SetActive(false);
-        Destroy(this.gameObject);
-        triggerForBrokenWallTrigger.SetActive(true);
+        //if (GameObject.FindGameObjectWithTag("Metal") == null)
+        //{
+        //    Debug.Log("it worked");
+        //    triggerForBrokenWallTrigger.SetActive(true);
+        //    Destroy(this.gameObject);
+        //}
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
